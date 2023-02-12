@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace lets-make-it-client build",
+    "dev": "yarn workspace lets-make-it-server dev",
+    "dev:debug": "yarn workspace lets-make-it-server dev:debug",
+    "heroku-postbuild": "yarn workspace lets-make-it-client build",
+    "start": "yarn workspace lets-make-it-server start",
+    "dev:cypress": "yarn workspace lets-make-it-server dev:e2e",
+    "e2e:open": "yarn workspace lets-make-it-e2e e2e:open",
+    "e2e:run": "yarn workspace lets-make-it-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^16.18"
+  }
+}
