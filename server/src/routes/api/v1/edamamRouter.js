@@ -12,7 +12,7 @@ edamamRouter.get("/", async (req, res)=>{
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
-      .json({recipes: recipesData.hits})
+      .json({recipes: recipesData})
   } catch (error) {
     return res.status(401).json({ errors: error })
   }
