@@ -10,8 +10,7 @@ const requiredUrl = `${baseUrl}?type=public&app_id=${edamamApiId}&app_key=%20${e
 class EdamamClient {
   static async getRecipes(mealType) {
     try {
-      const url = `${requiredUrl}&mealType=${mealType}`
-      console.log(url)
+      const url = `${requiredUrl}&mealType=${mealType}&random=true`
       const apiResponse = await got(url)
       const responseBody = apiResponse.body
       return responseBody
