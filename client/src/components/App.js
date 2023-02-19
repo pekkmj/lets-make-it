@@ -8,6 +8,7 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import RecipesList from "./RecipesList";
+import ProfilePage from "./ProfilePage";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -30,6 +31,7 @@ const App = (props) => {
       <Switch>
         <Route exact path="/recipes" component={RecipesList}/>
         <Route exact path="/users/new" component={RegistrationForm} />
+        <Route exact path="/users/:username" render={(props) => <ProfilePage {...props} currentUser={currentUser}/>}/>
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
     </Router>
