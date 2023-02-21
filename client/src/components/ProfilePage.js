@@ -5,7 +5,6 @@ import UserTile from "./UserTile.js";
 import NewIngredientFrom from "./NewIngredientForm.js";
 
 const ProfilePage = ({currentUser, ...props }) =>{
-// console.log(currentUser)
   const [user, setUser] = useState({ ingredients: []})
   const [errors, setErrors] = useState({})
   const [ingredientForm, setIngredientForm] = useState(false)

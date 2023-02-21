@@ -1,6 +1,7 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Comfortaa&display=swap');
 // place global css here
 *,
 *::before,
@@ -11,4 +12,133 @@
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+}
+
+.top-bar, .top-bar ul {
+  background-color: white;
+}
+
+.unselected {
+  color: black;
+}
+
+.semi-selected {
+  color: rgb(239, 177, 85);
+}
+
+.selected {
+  color: rgb(178, 97, 186);
+}
+
+.recommend {
+  background-color: rgb(143, 176, 143);
+  margin-bottom: 30px;
+  border-radius: 10px;
+  position: sticky;
+  height: fit-content;
+}
+
+.semi-recommend {
+  background-color: rgb(236, 227, 162);
+  margin-bottom: 30px;
+  border-radius: 10px;
+  position: sticky;
+  height: fit-content;
+}
+
+.available {
+  background-color: rgb(130, 103, 103);
+  margin-bottom: 30px;
+  border-radius: 10px;
+  position: sticky;
+  height: fit-content;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.recipeHeader {
+  font-family: 'Amatic SC';
+  font-size: 80px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.recipeTitle{
+  font-family: 'Amatic SC';
+  font-weight: bolder;
+  text-align: center;
+}
+
+.ingredient {
+  font-family: 'Comfortaa';
+  margin: auto;
+}
+
+.button {
+  // background-color: rgb(208, 153, 220);
+  border-radius: 10px;
+  font-family: 'Comfortaa';
+  // background-color: rgb(195, 177, 152);
+  background-color: antiquewhite;
+  color: black;
+  // border: solid black 3px;
+}
+
+.button:hover {
+  // background-color: rgb(208, 153, 220);
+  font-family: 'Comfortaa';
+  background-color: antiquewhite;
+  color: black;
+}
+
+.appTitle {
+  font-family: 'Amatic SC';
+  font-weight: bolder;
+  font-size: 50px;
+  color: rgb(143, 176, 143);
+}
+
+.appTitle:focus {
+  font-family: 'Amatic SC';
+  font-weight: bolder;
+  font-size: 50px;
+  color: rgb(143, 176, 143);
+}
+
+.appTitle:hover {
+  color: rgb(165, 178, 165);
+}
+
+.reroll {
+  font-family: 'Comfortaa';
+  background-color: antiquewhite;
+  color: black;
+}
+
+.reroll:hover {
+  font-family: 'Comfortaa';
+  background-color: antiquewhite;
+  color: black;
+}
+
+.signInButton {
+  font-family: 'Comfortaa';
+  margin: 5px;
+  background-color: antiquewhite;
+}
+
+.signUpAndOutButton {
+  font-family: 'Comfortaa';
+  margin: 5px;
+  background-color: rgb(143, 176, 143);
+}
+
+.signUpAndOutButton:hover {
+  font-family: 'Comfortaa';
+  background-color: rgb(143, 176, 143);
 }

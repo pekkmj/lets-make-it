@@ -19,7 +19,6 @@ const NewIngredientFrom = ({currentUser, addNewIngredient, user}) => {
         throw new Error(`${response.status} (${response.statusText})`)
       }
       const body = await response.json()
-      console.log(body)
       setMadeIngredients(body)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -29,10 +28,6 @@ const NewIngredientFrom = ({currentUser, addNewIngredient, user}) => {
   useEffect (()=> {
     getIngredients()
   }, [])
-
-  const ingredientNames = madeIngredients.map((ingredient)=>{
-    return ingredient.name
-  })
 
   const handleInputChange = (event) => {
     setNewIngredient({
