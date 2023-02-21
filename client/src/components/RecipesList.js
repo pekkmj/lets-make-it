@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import IngredientTile from "./IngredientTile";
 
-const RecipesList = () =>{
+const RecipesList = ({currentUser, ...props}) =>{
   const baseUrl = '/api/v1/recipes?mealType=Dinner'
   const [recipes, setRecipes] = useState([])
+  const [user, setUser] = useState({ ingredients: []})
   const [pageLink, setPageLink] = useState(baseUrl)
+  const [ingredients, setIngredients] = useState([])
 
   const getRecipes = async () =>{
     const onlyRecipes = []
@@ -42,37 +45,131 @@ const RecipesList = () =>{
     }
   }
 
-  const recipeInfo = recipes.map((recipe)=>{
-    let ingredientCounter = 0
-    const ingredientList = recipe.ingredients.map((ingredient)=>{
-      ingredientCounter++
-      return <ul key={ingredientCounter}>{ingredient.food}</ul>
-    })
-    return (
-      <div key={recipe.label}>
-      <h3>{recipe.label}</h3>
-        <ul>
-          {ingredientList}
-          <a href={recipe.url}>Recipe</a>         
-        </ul>
-      </div>
-    ) 
-  })
+  const getUser = async () => {
+    try {
+      const response = await fetch(`/api/v1/users/${currentUser.username}`)
+      if (!response.ok) {
+        throw new Error(`${response.status} (${response.statusText})`)
+      }
+      const body = await response.json()
+      setUser(body.user)
+      setIngredients(body.user.ingredients)
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
 
-  useEffect(()=>{
-    getRecipes()
-  }, [])
+  const recipeInfo = recipes.map((recipe)=>{
+    let relateCounter = 0
+    const ingredientNames = recipe.ingredients.map((ingredient)=>{
+      return ingredient.food
+    })
+    const filteredIngredients = [...new Set(ingredientNames)].sort()
+    const ingredientList = filteredIngredients.map((name)=>{
+      const lowerName = name.toLowerCase()
+      let ingredient = <ul key={name} className="unselected cell small-12 medium-6 large-5 ingredient">{lowerName}</ul>
+      const names = []
+      for (const ingredient in ingredients) {
+        const details = ingredients[ingredient]
+        names.push(details.name)
+      }
+      const splitWord = lowerName.split(" ")
+      if (splitWord.length > 1){
+        splitWord.forEach((word)=>{
+          if (names.includes(word)){
+            relateCounter = relateCounter + 0.5
+            ingredient = <ul key={name} className="semi-selected cell small-12 medium-6 large-5 ingredient">{lowerName}</ul>
+            return ingredient
+          }
+        })
+        return ingredient    
+      } else {
+        if ((names.indexOf(splitWord[0]) !== -1) || (names.indexOf(`${splitWord[0]}s`) !== -1) || (names.indexOf(`${splitWord[0]}es`) !== -1)){
+          relateCounter = relateCounter + 1
+          ingredient = <ul key={name} className="selected cell small-12 medium-6 large-5 ingredient">{lowerName}</ul>
+          return ingredient
+        } else {
+          return ingredient
+        }
+      }
+    })
+    if (relateCounter >= 3) {
+      return (
+        <div key={recipe.label} className="cell small-6 medium-4 large-3 recommend grid-container">
+        <h3 className="recipeTitle">{recipe.label}</h3>
+          <ul className="grid-x grid-margin-x grid-container">
+            {ingredientList}
+          </ul>
+          <div className="center">
+              <a href={recipe.url} target="_blank" className="button recipeLink">Recipe</a>
+          </div> 
+        </div>
+      ) 
+    } else if (relateCounter > 0 && relateCounter < 3){
+        return (
+          <div key={recipe.label} className="cell small-6 medium-4 large-3 semi-recommend grid-container">
+          <h3 className="recipeTitle">{recipe.label}</h3>
+            <ul className="grid-x grid-margin-x grid-container">
+              {ingredientList}
+            </ul>
+            <div className="center">
+              <a href={recipe.url} target="_blank" className="button recipeLink">Recipe</a>
+            </div>        
+          </div>
+        ) 
+    } else {
+        return (
+          <div key={recipe.label} className="cell small-6 medium-4 large-3 available grid-container">
+          <h3 className="recipeTitle">{recipe.label}</h3>
+            <ul className="grid-x grid-margin-x grid-container">
+              {ingredientList}
+            </ul>
+            <div className="center">
+              <a href={recipe.url} target="_blank" className="button recipeLink">Recipe</a>
+            </div>      
+          </div>
+        ) 
+    }
+  })
 
   const handleClick = () =>{
     getRecipes()
   }
 
-  return (
-    <div>
-     {recipeInfo}
-     <button type="button" className="button" onClick={handleClick}>Reroll Recipes</button> 
-    </div>
-  )
+  if (currentUser) {
+    useEffect(()=>{
+      getRecipes()
+      getUser()
+    }, [])
+
+    return (
+      <div className="grid-container">
+        <h1 className="recipeHeader">Welcome {user.username}</h1>
+        <div className="grid-x grid-margin-x">
+          {recipeInfo}
+        </div>
+        <div className="center">
+          <button type="button" className="button reroll" onClick={handleClick}>Reroll Recipes</button> 
+        </div>
+      </div>
+    )
+  } else {
+    useEffect(()=>{
+      getRecipes()
+    }, [])
+
+    return (
+      <div className="grid-container">
+        <h1 className="recipeHeader">Sign in to get the full experience!</h1>
+        <div className="grid-x grid-margin-x">
+          {recipeInfo}
+        </div>
+        <div className="center">
+          <button type="button" className="button reroll" onClick={handleClick}>Reroll Recipes</button> 
+        </div>
+      </div>
+    )
+  }
 }
 
 export default RecipesList
