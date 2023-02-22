@@ -3,7 +3,6 @@ import ErrorList from "./layout/ErrorList.js";
 
 const NewIngredientFrom = ({currentUser, addNewIngredient, user}) => {
 
-  console.log(user)
   const emptyNewIngredient = {
     userId: currentUser.id,
     name: ''
