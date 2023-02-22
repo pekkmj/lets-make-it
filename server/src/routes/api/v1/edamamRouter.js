@@ -1,13 +1,13 @@
-import  express from "express"
+import express from "express"
 
 import EdamamClient from "../../../../apiClient/Edamam.js"
 
 const edamamRouter = new express.Router()
 
 edamamRouter.get("/", async (req, res)=>{
-  const mealType = req.query.mealType
+  const ingredients = req.query.ingredients
   try {
-    const recipesResponse = await EdamamClient.getRecipes(mealType)
+    const recipesResponse = await EdamamClient.getRecipes(ingredients)
     const recipesData = JSON.parse(recipesResponse) 
     return res
       .set({ "Content-Type": "application/json" })

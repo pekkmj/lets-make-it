@@ -4,13 +4,12 @@ dotenv.config();
 
 const edamamApiKey = process.env.EDAMAM_API_KEY
 const edamamApiId = process.env.EDAMAM_APP_ID
-const baseUrl = " https://api.edamam.com/api/recipes/v2"
-const requiredUrl = `${baseUrl}?type=public&app_id=${edamamApiId}&app_key=%20${edamamApiKey}`
+const baseUrl = " https://api.edamam.com/api/recipes/v2?type=public"
 
 class EdamamClient {
-  static async getRecipes(mealType) {
+  static async getRecipes(ingredients) {
     try {
-      const url = `${requiredUrl}&mealType=${mealType}&random=true`
+      const url = `${baseUrl}&q=${ingredients}&app_id=${edamamApiId}&app_key=%20${edamamApiKey}&random=true`
       const apiResponse = await got(url)
       const responseBody = apiResponse.body
       return responseBody

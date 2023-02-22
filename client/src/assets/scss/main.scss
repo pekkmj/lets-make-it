@@ -61,14 +61,14 @@
   margin-bottom: 15px;
 }
 
-.recipeHeader {
+.recipe-header {
   font-family: 'Amatic SC';
   font-size: 80px;
   font-weight: bolder;
   text-align: center;
 }
 
-.recipeTitle{
+.recipe-title{
   font-family: 'Amatic SC';
   font-weight: bolder;
   text-align: center;
@@ -96,21 +96,21 @@
   color: black;
 }
 
-.appTitle {
+.app-title {
   font-family: 'Amatic SC';
   font-weight: bolder;
   font-size: 50px;
   color: rgb(143, 176, 143);
 }
 
-.appTitle:focus {
+.app-title:focus {
   font-family: 'Amatic SC';
   font-weight: bolder;
   font-size: 50px;
   color: rgb(143, 176, 143);
 }
 
-.appTitle:hover {
+.app-title:hover {
   color: rgb(165, 178, 165);
 }
 
@@ -126,19 +126,62 @@
   color: black;
 }
 
-.signInButton {
+.reroll:focus {
+  font-family: 'Comfortaa';
+  background-color: antiquewhite;
+  color: black;
+}
+
+.sign-in-button {
   font-family: 'Comfortaa';
   margin: 5px;
   background-color: antiquewhite;
 }
 
-.signUpAndOutButton {
+.sign-in-button:focus {
+  font-family: 'Comfortaa';
+  margin: 5px;
+  background-color: antiquewhite;
+  color: black;
+}
+
+.sign-up-and-out-button {
   font-family: 'Comfortaa';
   margin: 5px;
   background-color: rgb(143, 176, 143);
 }
 
-.signUpAndOutButton:hover {
+.sign-up-and-out-button:hover {
   font-family: 'Comfortaa';
   background-color: rgb(143, 176, 143);
+}
+
+.landing-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.home-form {
+  width: 50%;
+}
+
+.home-title {
+  font-family: 'Amatic SC';
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+.home-buttons {
+  padding-left: 30%;
+}
+
+.left-button {
+  margin-right: 30px;
+}
+
+.input-field {
+  border-radius: 50px;
 }

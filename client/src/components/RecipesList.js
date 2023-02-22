@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import IngredientTile from "./IngredientTile";
 
 const RecipesList = ({currentUser, ...props}) =>{
-  const baseUrl = '/api/v1/recipes?mealType=Dinner'
+
+  const ingredientsLink = props.location.search
+
+  const baseUrl = `/api/v1/recipes${ingredientsLink}`
   const [recipes, setRecipes] = useState([])
   const [user, setUser] = useState({ ingredients: []})
   const [pageLink, setPageLink] = useState(baseUrl)
@@ -16,30 +18,15 @@ const RecipesList = ({currentUser, ...props}) =>{
         throw new Error(`${response.status} (${response.statusText})`)
       }
       const body = await response.json()
-      if (body.hits){
-        for (const data in body.hits){
-          const details = body.hits[data]
-          for (const key in details){
-            if (key === 'recipe'){
-              onlyRecipes.push(details[key])
-            }
+      for (const data in body.recipes.hits){
+        const details = body.recipes.hits[data]
+        for (const key in details){
+          if (key === 'recipe'){
+            onlyRecipes.push(details[key])
           }
         }
-        setRecipes(onlyRecipes)
-        setPageLink(body._links.next.href)
       }
-      else {
-        for (const data in body.recipes.hits){
-          const details = body.recipes.hits[data]
-          for (const key in details){
-            if(key === 'recipe'){
-              onlyRecipes.push(details[key])
-            }
-          }
-        }
-        setRecipes(onlyRecipes)
-        setPageLink(body.recipes._links.next.href)
-      }
+      setRecipes(onlyRecipes)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
@@ -96,7 +83,7 @@ const RecipesList = ({currentUser, ...props}) =>{
     if (relateCounter >= 3) {
       return (
         <div key={recipe.label} className="cell small-6 medium-4 large-3 recommend grid-container">
-        <h3 className="recipeTitle">{recipe.label}</h3>
+        <h3 className="recipe-title">{recipe.label}</h3>
           <ul className="grid-x grid-margin-x grid-container">
             {ingredientList}
           </ul>
@@ -108,7 +95,7 @@ const RecipesList = ({currentUser, ...props}) =>{
     } else if (relateCounter > 0 && relateCounter < 3){
         return (
           <div key={recipe.label} className="cell small-6 medium-4 large-3 semi-recommend grid-container">
-          <h3 className="recipeTitle">{recipe.label}</h3>
+          <h3 className="recipe-title">{recipe.label}</h3>
             <ul className="grid-x grid-margin-x grid-container">
               {ingredientList}
             </ul>
@@ -120,7 +107,7 @@ const RecipesList = ({currentUser, ...props}) =>{
     } else {
         return (
           <div key={recipe.label} className="cell small-6 medium-4 large-3 available grid-container">
-          <h3 className="recipeTitle">{recipe.label}</h3>
+          <h3 className="recipe-title">{recipe.label}</h3>
             <ul className="grid-x grid-margin-x grid-container">
               {ingredientList}
             </ul>
@@ -135,7 +122,7 @@ const RecipesList = ({currentUser, ...props}) =>{
   const handleClick = () =>{
     getRecipes()
   }
-
+  
   if (currentUser) {
     useEffect(()=>{
       getRecipes()
@@ -144,7 +131,7 @@ const RecipesList = ({currentUser, ...props}) =>{
 
     return (
       <div className="grid-container">
-        <h1 className="recipeHeader">Welcome {user.username}</h1>
+        <h1 className="recipe-header">Welcome {user.username}</h1>
         <div className="grid-x grid-margin-x">
           {recipeInfo}
         </div>
@@ -160,7 +147,7 @@ const RecipesList = ({currentUser, ...props}) =>{
 
     return (
       <div className="grid-container">
-        <h1 className="recipeHeader">Sign in to get the full experience!</h1>
+        <h1 className="recipe-header">Sign in to get the full experience!</h1>
         <div className="grid-x grid-margin-x">
           {recipeInfo}
         </div>
