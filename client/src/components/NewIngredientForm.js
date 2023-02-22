@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ErrorList from "./layout/ErrorList.js";
 
-const NewIngredientFrom = ({currentUser, addNewIngredient, user}) => {
+const NewIngredientFrom = ({currentUser, addNewIngredient}) => {
 
   const emptyNewIngredient = {
     userId: currentUser.id,
@@ -48,14 +48,10 @@ const NewIngredientFrom = ({currentUser, addNewIngredient, user}) => {
 
   return (
     <>
-      <h4>Add an Ingredient:</h4>
+      <h4 className="plain-title">Add an Ingredient:</h4>
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          Name:
-          <input type="text" name="name" value={newIngredient.name} onChange={handleInputChange} />
-        </label>
-
+        <input type="text" name="name" value={newIngredient.name} onChange={handleInputChange} />
         <input type="submit" className="button" />
       </form>
     </>

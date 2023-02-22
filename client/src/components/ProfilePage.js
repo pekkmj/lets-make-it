@@ -56,30 +56,38 @@ const ProfilePage = ({currentUser, ...props }) =>{
   }, [])
 
   let newIngredientForm
-  const handleClick = () => {
-    if(ingredientForm === false){
-      setIngredientForm(true)
-    } else {
-      setIngredientForm(false)
+  let ingredientButton
+  if(currentUser && document.URL.includes(currentUser.username)){
+    const handleClick = () => {
+      if(ingredientForm === false){
+        setIngredientForm(true)
+      } else {
+        setIngredientForm(false)
+      }
     }
+    ingredientButton = <button className="button add-ingredient" onClick={handleClick}>Add Ingredient</button>
   }
+
   if(ingredientForm === true){
     newIngredientForm = <NewIngredientFrom 
       username={username}
       currentUser={currentUser}
       addNewIngredient={addNewIngredient}
-      user={user}
+
     />
   }
 
-
   return (
-    <div>
-      <UserTile user={user} />
-      <div>
-      <button className="button" onClick={handleClick}>Add Ingredient</button>
-      <ErrorList errors={errors} />
-      {newIngredientForm}
+    <div className="page-body">
+      <UserTile
+        user={user}
+        setUser={setUser}
+        currentUser={currentUser}
+      />
+      <div className="ingredient-form">
+        {ingredientButton}
+        <ErrorList errors={errors} />
+        {newIngredientForm}
       </div>
     </div>
   )

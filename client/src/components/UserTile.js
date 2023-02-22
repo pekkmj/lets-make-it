@@ -1,7 +1,7 @@
 import React from "react";
 import IngredientTile from "./IngredientTile";
 
-const UserTile = ({user}) => {
+const UserTile = ({user, setUser, currentUser}) => {
   const {username, ingredients} = user
 
   const ingredientList = ingredients.map((ingredient)=>{
@@ -9,15 +9,17 @@ const UserTile = ({user}) => {
       <IngredientTile
         key={ingredient.name}
         ingredient={ingredient}
+        user={user}
+        setUser={setUser}
+        currentUser={currentUser}
       />
     )
   })
 
   return (
-    <div>
-      <h1>{username}</h1>
-      <h3>{username}'s pantry</h3>
-      <ul>{ingredientList}</ul>
+    <div className="grid-container profile-body">
+      <h1 className="plain-title">{username}'s pantry</h1>
+      <ul className="ingredient-list grid-x margin-x">{ingredientList}</ul>
     </div>
   )
 }
