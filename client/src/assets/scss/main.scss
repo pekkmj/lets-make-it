@@ -14,8 +14,12 @@
   tab-size: 4;
 }
 
+body{
+  background-color: rgb(252, 243, 232);
+}
+
 .top-bar, .top-bar ul {
-  background-color: white;
+  background-color: rgb(252, 243, 232);
 }
 
 .unselected {
@@ -27,7 +31,7 @@
 }
 
 .selected {
-  color: rgb(178, 97, 186);
+  color:  rgb(143, 176, 143);
 }
 
 .recommend {
@@ -47,7 +51,7 @@
 }
 
 .available {
-  background-color: rgb(130, 103, 103);
+  background-color: rgb(189, 157, 157);
   margin-bottom: 30px;
   border-radius: 10px;
   position: sticky;
@@ -77,32 +81,33 @@
 .ingredient {
   font-family: 'Comfortaa';
   margin: auto;
+  font-size: 20px;
 }
 
 .button {
   border-radius: 10px;
   font-family: 'Comfortaa';
-  background-color: antiquewhite;
+  background-color:  rgb(239, 177, 85);
   color: black;
 }
 
 .button:hover {
   font-family: 'Comfortaa';
-  background-color: antiquewhite;
+  background-color:  rgb(239, 177, 85);
   color: black;
 }
 
 .button:focus {
   border-radius: 10px;
   font-family: 'Comfortaa';
-  background-color: antiquewhite;
+  background-color:  rgb(239, 177, 85);
   color: black;
 }
 
 .app-title {
   font-family: 'Amatic SC';
   font-weight: bolder;
-  font-size: 50px;
+  font-size: 70px;
   color: rgb(143, 176, 143);
 }
 
@@ -119,32 +124,32 @@
 
 .reroll {
   font-family: 'Comfortaa';
-  background-color: antiquewhite;
+  background-color: rgb(239, 177, 85);
   color: black;
 }
 
 .reroll:hover {
   font-family: 'Comfortaa';
-  background-color: antiquewhite;
+  background-color: rgb(239, 177, 85);
   color: black;
 }
 
 .reroll:focus {
   font-family: 'Comfortaa';
-  background-color: antiquewhite;
+  background-color: rgb(239, 177, 85);
   color: black;
 }
 
 .sign-in-button {
   font-family: 'Comfortaa';
   margin: 5px;
-  background-color: antiquewhite;
+  background-color: rgb(239, 177, 85);
 }
 
 .sign-in-button:focus {
   font-family: 'Comfortaa';
   margin: 5px;
-  background-color: antiquewhite;
+  background-color: rgb(239, 177, 85);
   color: black;
 }
 
@@ -216,6 +221,12 @@
   height: 100%;
 }
 
+.form-title{
+  font-family: 'Amatic SC';
+  font-weight: bolder;
+  font-size: 40px;
+}
+
 .plain-title{
   font-family: 'Amatic SC';
   font-weight: bolder;
@@ -230,4 +241,91 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.food-image {
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.recipe-link {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.overlay {
+  background-color: rgba(0,0,0,0.05);
+  width: 100%;
+  height: 100%; 
+  z-index: -1;
+  top: 0; 
+  left: 0; 
+  position: fixed; 
+}
+
+.popup-container {
+  height: auto;
+  width: 50%;
+  margin: auto;
+  margin-top: 20%;
+  position: center;
+  z-index: 1;
+  background-color: rgb(245, 232, 215);
+  border-radius: 10px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.recipe-subheader {
+  font-family: 'Comfortaa';
+  font-size: 22px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.edamam-link {
+  color: rgb(143, 176, 143);
+}
+
+.edamam-link:hover {
+  color: rgb(143, 176, 143);
+  text-decoration: underline;
+}
+
+.edamam-link:focus {
+  color: rgb(143, 176, 143);
+}
+
+.overlay-ingredient {
+  font-family: 'Comfortaa';
+  margin: auto;
+  font-size: 30px;
+}
+
+@media (max-width: 1023px) {
+  .overlay-ingredient{
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .recipe-title {
+    font-size: 30px;
+  }
+
+  .plain-title {
+    font-size: 50px;
+  }
+
+  .top-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .overlay-ingredient{
+    font-size: 20px;
+  }
 }

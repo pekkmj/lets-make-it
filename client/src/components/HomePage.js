@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom"
 
-const HomePage = ({currentUser}) =>{
+const HomePage = () =>{
 
   const emptyField = {
     list: ''
   }
   const [ingredientInput, setIngredientInput] = useState(emptyField)
-  const [user, setUser] = useState({ ingredients: []})
   const [ingredientList, setIngredientList] = useState("")
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [random, setRandom] = useState(false)
