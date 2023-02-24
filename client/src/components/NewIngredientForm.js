@@ -48,7 +48,7 @@ const NewIngredientFrom = ({currentUser, addNewIngredient}) => {
 
   return (
     <>
-      <h4 className="plain-title">Add an Ingredient:</h4>
+      <h3 className="form-title">Add an Ingredient:</h3>
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit}>
         <input type="text" name="name" value={newIngredient.name} onChange={handleInputChange} />
