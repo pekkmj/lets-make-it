@@ -10,7 +10,6 @@ import TopBar from "./layout/TopBar";
 import RecipesList from "./RecipesList";
 import ProfilePage from "./ProfilePage";
 import HomePage from "./HomePage";
-import AuthenticatedRoute from "./authentication/AuthenticatedRoute"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
