@@ -10,7 +10,7 @@ Password: cook
 
 (Not a real email!)
 
-## Features:
+# Features:
 
   - Search for recipes by a couple ingredients or receive random ones!
 
@@ -36,11 +36,11 @@ Password: cook
 
     * Black: The ingredient shares no commonality with any of the user's pantry ingredients
 
-# Search results example
+## Search results example
 
-<img src="https://imgur.com/oh7a1E1"/>
+<img src="https://i.imgur.com/oh7a1E1.png" width="400"/>
 
-## Installing on your Local Machine
+# Installing on your Local Machine
 
 - Clone the repository
 
@@ -60,11 +60,11 @@ Password: cook
 
 - **Note: the log in credentials will not work when you clone it. But you can make your own!** 
 
-## Creator
+# Creator
 
 Michael Pekkarinen
 
-## Technologies used
+# Technologies used
 
 Front End: React, Sass/CSS, HTML
 
