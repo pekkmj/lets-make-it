@@ -38,7 +38,7 @@ Password: cook
 
 # Search results example
 
-<img src="https://imgur.com/oh7a1E1" width="400"/>
+<img src="https://imgur.com/oh7a1E1"/>
 
 ## Installing on your Local Machine
 
