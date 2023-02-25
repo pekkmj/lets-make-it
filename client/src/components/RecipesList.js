@@ -58,7 +58,7 @@ const RecipesList = ({currentUser, ...props}) =>{
     const filteredIngredients = [...new Set(ingredientNames)].sort()
     const ingredientList = filteredIngredients.map((name)=>{
       const lowerName = name.toLowerCase()
-      let ingredient = <ul key={name} className="unselected cell small-12 medium-6 large-5 overlay-ingredient">{lowerName}</ul>
+      let ingredient
       const names = []
       for (const ingredient in ingredients) {
         const details = ingredients[ingredient]
@@ -66,37 +66,52 @@ const RecipesList = ({currentUser, ...props}) =>{
       }
       const splitWord = lowerName.split(" ")
       if (splitWord.length > 1){
-        splitWord.forEach((word)=>{
-          if (names.includes(word)){
-            relateCounter = relateCounter + 0.5
-            ingredient = <ul key={name} className="semi-selected cell small-12 medium-6 large-5 overlay-ingredient">{lowerName}</ul>
-            return ingredient
-          }
-        })
-        return ingredient    
-      } else {
-        if ((names.indexOf(splitWord[0]) !== -1) || (names.indexOf(`${splitWord[0]}s`) !== -1) || (names.indexOf(`${splitWord[0]}es`) !== -1)){
-          relateCounter = relateCounter + 1
+      let areRelated = false;
+        if (names.includes(lowerName)){
           ingredient = <ul key={name} className="selected cell small-12 medium-6 large-5 overlay-ingredient">{lowerName}</ul>
+          relateCounter = relateCounter + 1
           return ingredient
         } else {
+          for (let i = 0; i < names.length; i++) {
+            const ingredientNames = names[i].split(" ");
+            for (let j = 0; j < splitWord.length; j++) {
+              const splitTerm = splitWord[j];
+              for (let k = 0; k < ingredientNames.length; k++) {
+                const ingredient = ingredientNames[k];
+                if (splitTerm === ingredient) {
+                  areRelated = true;
+                  break;
+                }
+              }
+              if (areRelated) {
+                break;
+              }
+            }
+            if (areRelated) {
+              break;
+            }
+          }
+          if (areRelated) {
+            ingredient = <ul key={name} className="semi-selected cell small-12 medium-6 large-5 overlay-ingredient">{lowerName}</ul>
+            relateCounter = relateCounter + 0.5
+  
+          } else {
+            ingredient = <ul key={name} className="unselected cell small-12 medium-6 large-5 overlay-ingredient">{lowerName}</ul>
+          }
           return ingredient
         }
       }
-    })
-
+    })    
     const handlePopupOpen = () =>{
       setPopupOpen(true)
       setIngredientListDisplay(ingredientList)
-      console.log(ingredientListDisplay)
     }
 
     const handlePopupClose = () =>{
       setPopupOpen(false)
-      console.log(popupOpen)
     }
 
-    if (relateCounter >= 3) {
+    if (relateCounter >= 5) {
       return (
         <div key={recipe.label} className="cell small-6 medium-4 large-3 recommend grid-container">
         <h3 className="recipe-title">{recipe.label}</h3>
@@ -116,7 +131,7 @@ const RecipesList = ({currentUser, ...props}) =>{
           </div> 
         </div>
       ) 
-    } else if (relateCounter > 0 && relateCounter < 3){
+    } else if (relateCounter > 1.5 && relateCounter < 5){
         return (
           <div key={recipe.label} className="cell small-6 medium-4 large-3 semi-recommend grid-container">
           <h3 className="recipe-title">{recipe.label}</h3>
