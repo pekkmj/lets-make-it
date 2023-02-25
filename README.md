@@ -10,7 +10,7 @@ Password: cook
 
 (Not a real email!)
 
-<a target="_blank" src="https://lets-make-it.herokuapp.com/">Link to application</a>
+Link to application: https://lets-make-it.herokuapp.com/
 
 # Features:
 
