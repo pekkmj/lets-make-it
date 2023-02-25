@@ -4,13 +4,13 @@ class UserSeeder {
   static async seed() {
     const userData = [
       {
-        username: "bob",
-        email: "bob@gmail.com",
+        username: "GuyFieri",
+        email: "guy@flavortown.com",
         cryptedPassword: "kn4l3kn4l32kn4l2n4l5n66ln7l6n54ln32ln"
       },
       {
-        username: "bobette",
-        email: "bobette@gmail.com",
+        username: "CookingMama",
+        email: "mama@nintendo.com",
         cryptedPassword: "l7h354243h2l45j234h23l4jtg3bl4khcjkhv31"
       }
     ]

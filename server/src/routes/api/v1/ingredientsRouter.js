@@ -4,13 +4,15 @@ const { ValidationError } = Objection;
 
 import cleanUserInput from "../../../services/cleanUserInput.js";
 import { Ingredient, User } from "../../../models/index.js";
+import IngredientSerializer from "../../../serializers/IngredientSerializer.js";
 
 const ingredientsRouter = new express.Router()
 
 ingredientsRouter.get("/", async (req, res)=>{
   try {
     const ingredients = await Ingredient.query()
-    return res.status(200).json( ingredients )
+    const serializedIngredients = IngredientSerializer.getSummaries(ingredients)
+    return res.status(200).json({ ingredients: serializedIngredients })
   } catch (error) {
     return res.status(500).json({ errors: error })
   }
@@ -25,11 +27,14 @@ ingredientsRouter.post("/", async (req, res) => {
     const findUser = await User.query().findById(userId)
     if (verifyIngredient === undefined){
       const newIngredient = await Ingredient.query().insertAndFetch({name})
-      await findUser.$relatedQuery("ingredients").relate(newIngredient)
-      return res.status(201).json({ ingredient: newIngredient })
+      const serializedNewIngredient = IngredientSerializer.getSummary(newIngredient)
+      console.log(serializedNewIngredient)
+      await findUser.$relatedQuery("ingredients").relate(serializedNewIngredient)
+      return res.status(201).json({ ingredient: serializedNewIngredient })
     } else {
       const includedIngredient = await findUser.$relatedQuery("ingredients").findOne({name: name})
       if (includedIngredient === undefined){
+        console.log(verifyIngredient)
         await findUser.$relatedQuery("ingredients").relate(verifyIngredient)
         return res.status(201).json({ ingredient: verifyIngredient})
       } else {
