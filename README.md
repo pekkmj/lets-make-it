@@ -10,6 +10,8 @@ Password: cook
 
 (Not a real email!)
 
+Link to application: https://lets-make-it.herokuapp.com/
+
 # Features:
 
   - Search for recipes by a couple ingredients or receive random ones!
