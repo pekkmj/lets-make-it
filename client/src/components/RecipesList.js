@@ -204,7 +204,7 @@ const RecipesList = ({currentUser, ...props}) =>{
     return (
       <div className="grid-container">
         <h3 className="recipe-header">Sign in to get the full experience!</h3>
-        <h6 className="recipe-subheader">Powered by <a href="https://www.edamam.com/" className="plain-header">Edamam</a></h6>
+        <h6 className="recipe-subheader">Powered by <a href="https://www.edamam.com/" className="edamam-link">Edamam</a></h6>
         <div className="grid-x grid-margin-x">
           {recipeInfo}
         </div>
