@@ -43,6 +43,7 @@ const HomePage = () =>{
       <div className="grid-container home-form">
         <form onSubmit={handleSubmit}>
           <input type="text" list={ingredientInput.list} className="input-field" onChange={handleInputChange} />
+          <p className="search-advice">For best results, separate each ingredient with a comma ( , )</p>
           <div className="home-buttons">
             <input type="submit" className="button left-button" />
             <button className="button" onClick={handleRandom}>Random</button>
