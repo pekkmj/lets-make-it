@@ -302,6 +302,12 @@ body{
   font-size: 30px;
 }
 
+.user-title {
+  font-family: 'Amatic SC';
+  font-weight: bolder;
+  font-size: 50px;
+}
+
 @media (max-width: 1023px) {
   .overlay-ingredient{
     font-size: 25px;
@@ -327,5 +333,47 @@ body{
 
   .overlay-ingredient{
     font-size: 20px;
+  }
+
+  .food-image {
+    margin-left: 23%;
+  }  
+}
+
+.home-title {
+  text-align: center;
+}
+
+.profile-body {
+  margin-right: 20%;
+}
+
+.ingredient-list {
+  margin-right: 20%;
+}
+
+.user-title {
+  margin-right: 20%;
+}
+
+@media (max-width: 400) {
+  .food-image {
+    margin-left: 23%;
+  }
+
+  .home-title {
+    text-align: center;
+  }
+
+  .profile-body {
+    margin-right: 20%;
+  }
+
+  .ingredient-list {
+    margin-right: 20%;
+  }
+
+  .user-title {
+    margin-right: 20%;
   }
 }

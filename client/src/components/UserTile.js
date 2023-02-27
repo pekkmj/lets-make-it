@@ -18,7 +18,7 @@ const UserTile = ({user, setUser, currentUser}) => {
 
   return (
     <div className="grid-container profile-body">
-      <h1 className="plain-title">{username}'s pantry</h1>
+      <h1 className="user-title">{username}'s pantry</h1>
       <ul className="ingredient-list grid-x margin-x">{ingredientList}</ul>
     </div>
   )

@@ -45,7 +45,7 @@ const HomePage = () =>{
           <input type="text" list={ingredientInput.list} className="input-field" onChange={handleInputChange} />
           <div className="home-buttons">
             <input type="submit" className="button left-button" />
-            <button className="button" onClick={handleRandom}>Give Me Anything</button>
+            <button className="button" onClick={handleRandom}>Random</button>
           </div>
         </form>
       </div>
