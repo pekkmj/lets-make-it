@@ -113,7 +113,7 @@ const RecipesList = ({currentUser, ...props}) =>{
 
     if (relateCounter >= 5) {
       return (
-        <div key={recipe.label} className="cell small-6 medium-4 large-3 recommend grid-container">
+        <div key={recipe.label} className="cell small-12 medium-4 large-3 recommend grid-container">
         <h3 className="recipe-title">{recipe.label}</h3>
           <img src={recipe.image} className="food-image"/>
           <Popup open={popupOpen}  onClose={handlePopupClose}>
@@ -133,7 +133,7 @@ const RecipesList = ({currentUser, ...props}) =>{
       ) 
     } else if (relateCounter > 1.5 && relateCounter < 5){
         return (
-          <div key={recipe.label} className="cell small-6 medium-4 large-3 semi-recommend grid-container">
+          <div key={recipe.label} className="cell small-12 medium-4 large-3 semi-recommend grid-container">
           <h3 className="recipe-title">{recipe.label}</h3>
             <img src={recipe.image} className="food-image"/>
             <Popup open={popupOpen}  onClose={handlePopupClose}>
@@ -153,7 +153,7 @@ const RecipesList = ({currentUser, ...props}) =>{
         ) 
     } else {
         return (
-          <div key={recipe.label} className="cell small-6 medium-4 large-3 available grid-container">
+          <div key={recipe.label} className="cell small-12 medium-4 large-3 available grid-container">
           <h3 className="recipe-title">{recipe.label}</h3>
             <img src={recipe.image} className="food-image"/>
               <Popup open={popupOpen}  onClose={handlePopupClose}>
@@ -203,8 +203,8 @@ const RecipesList = ({currentUser, ...props}) =>{
 
     return (
       <div className="grid-container">
-        <h1 className="recipe-header">Sign in to get the full experience!</h1>
-        <h6>Powered by <a href="https://www.edamam.com/" className="plain-header">Edamam</a></h6>
+        <h3 className="recipe-header">Sign in to get the full experience!</h3>
+        <h6 className="recipe-subheader">Powered by <a href="https://www.edamam.com/" className="plain-header">Edamam</a></h6>
         <div className="grid-x grid-margin-x">
           {recipeInfo}
         </div>
