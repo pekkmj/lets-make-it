@@ -336,30 +336,30 @@ body{
   }
 
   .food-image {
-    margin-left: 23%;
+    margin-left: 9%;
   }  
-}
 
-.home-title {
-  text-align: center;
-}
-
-.profile-body {
-  margin-right: 20%;
-}
-
-.ingredient-list {
-  margin-right: 20%;
-}
-
-.user-title {
-  margin-right: 20%;
+  .home-title {
+    text-align: center;
+  }
+  
+  .profile-body {
+    margin-right: 20%;
+  }
+  
+  .ingredient-list {
+    margin-right: 20%;
+  }
+  
+  .user-title {
+    margin-right: 20%;
+  }
 }
 
 @media (max-width: 400) {
   .food-image {
-    margin-left: 23%;
-  }
+    margin-left: 9%;
+  } 
 
   .home-title {
     text-align: center;
