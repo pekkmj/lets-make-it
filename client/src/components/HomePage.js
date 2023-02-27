@@ -39,7 +39,7 @@ const HomePage = () =>{
 
   return (
     <div className="landing-page-container">
-      <h1 className="home-title">What Ingredients do you Have?</h1>
+      <h1 className="home-title">What Are You Craving?</h1>
       <div className="grid-container home-form">
         <form onSubmit={handleSubmit}>
           <input type="text" list={ingredientInput.list} className="input-field" onChange={handleInputChange} />
