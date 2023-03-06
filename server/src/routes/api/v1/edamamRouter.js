@@ -4,19 +4,15 @@ import EdamamClient from "../../../../apiClient/Edamam.js"
 import { Ingredient } from "../../../models/index.js";
 import { raw } from "objection";
 
-
 const edamamRouter = new express.Router()
 
 edamamRouter.get("/", async (req, res)=>{
   const ingredients = req.query.ingredients
   const randomIngredient = await Ingredient.query().orderBy(raw('random()')).first()
-
-  // if no ingredients submitted
-  //  query YOUR database for a raonfom ingredeint
   try {
     if (ingredients === undefined) {
       const recipesResponse = await EdamamClient.getRecipes(randomIngredient.name)
-      const recipesData = JSON.parse(recipesResponse) 
+      const recipesData = JSON.parse(recipesResponse)
       return res
         .set({ "Content-Type": "application/json" })
         .status(200)
