@@ -122,6 +122,25 @@ body{
   color: rgb(165, 178, 165);
 }
 
+.app-link {
+  font-family: 'Amatic SC';
+  font-weight: bold;
+  font-size: 50px;
+  color: rgb(0, 0, 0);
+  margin-top: 17px ;
+}
+
+.app-link:focus {
+  font-family: 'Amatic SC';
+  font-weight: bold;
+  font-size: 50px;
+  color: rgb(0, 0, 0);
+}
+
+.app-link:hover {
+  color: rgb(0, 0, 0);
+}
+
 .reroll {
   font-family: 'Comfortaa';
   background-color: rgb(239, 177, 85);
@@ -367,8 +386,10 @@ body{
 }
 
 .about-search {
-  width: 720px;
+  width: 350px;
   height: 550px;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
 
 .example-tiles {
@@ -398,6 +419,13 @@ body{
 .about-subheader {
   font-family: 'Comfortaa';
   font-weight: bolder;
+}
+
+.ingredients-image {
+  width:550px;
+  height: 350px;
+  margin-bottom: 1%;
+  border-radius: 10px;
 }
 
 @media (max-width: 1023px) {
@@ -453,6 +481,19 @@ body{
     margin: 1%;
     border-radius: 10px;
   }
+
+  .app-link {
+    font-size: 40px;
+    margin-left: 4%;
+  }
+
+  .top-bar-left {
+    margin-left: 13%;
+  }
+
+  .landing-page-container {
+    margin-top: 18%;
+  }
 }
 
 @media (max-width: 400) {
@@ -481,5 +522,26 @@ body{
     height: 450px;
     margin: 1%;
     border-radius: 10px;
+  }
+
+  .top-bar-left {
+    margin-left: 13%;
+  }
+  
+  .app-link {
+    font-size: 40px;
+    margin-left: 4%;
+  }
+
+  .app-link:hover{
+    font-size: 40px;
+  }
+
+  .app-link:focus {
+    font-size: 40px;
+  }
+
+  .landing-page-container {
+    margin-top: 18%;
   }
 }
