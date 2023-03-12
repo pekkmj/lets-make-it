@@ -33,10 +33,12 @@ const IngredientTile = ({ingredient, user, setUser, currentUser}) =>{
   if (currentUser && document.URL.includes(currentUser.username)){
     xMark = <FontAwesomeIcon icon={faXmark} onClick={deleteIngredient} />
   }
+
+  const lowerName = name.toLowerCase()
   
   return (
     <div className="ingredient cell small-6 medium-4 large-4">
-      <p>{name} {xMark}</p>
+      <p>{lowerName} {xMark}</p>
     </div>
   )
 }

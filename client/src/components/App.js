@@ -10,6 +10,8 @@ import TopBar from "./layout/TopBar";
 import RecipesList from "./RecipesList";
 import ProfilePage from "./ProfilePage";
 import HomePage from "./HomePage";
+import About from "./About";
+import HowTo from "./HowTo";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -31,6 +33,8 @@ const App = (props) => {
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/" render={(props) => <HomePage {...props} currentUser={currentUser}/>} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/how-to-use" component={HowTo} />
         <Route exact path="/recipes" render={(props) => <RecipesList {...props} currentUser={currentUser}/>}/>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/users/:username" render={(props) => <ProfilePage {...props} currentUser={currentUser}/>}/>

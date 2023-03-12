@@ -43,9 +43,6 @@ const ProfilePage = ({currentUser, ...props }) =>{
         const body = await response.json()
         const addedIngredient = body.ingredient
         addedIngredient.name = addedIngredient.name.toLowerCase()
-        console.log(addedIngredient)
-        // const lowerIngredient = addedIngredient.toLowerCase()
-        // console.log(lowerIngredient)
         setUser({...user, ingredients: [...user.ingredients, addedIngredient] })
         setErrors({})
         return [true, addedIngredient]
