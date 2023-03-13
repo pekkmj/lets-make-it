@@ -184,6 +184,8 @@ const RecipesList = ({currentUser, ...props}) =>{
       getUser()
     }, [])
 
+    console.log(`Welcome: ${user.username}`)
+
     return (
       <div className="grid-container">
         <h1 className="recipe-header">Welcome {user.username}</h1>
@@ -200,6 +202,8 @@ const RecipesList = ({currentUser, ...props}) =>{
     useEffect(()=>{
       getRecipes()
     }, [])
+
+    console.log(`Welcome: ${user.username}`)
 
     return (
       <div className="grid-container">
