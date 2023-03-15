@@ -182,7 +182,7 @@ const RecipesList = ({currentUser, ...props}) =>{
     useEffect(()=>{
       getRecipes()
       getUser()
-      console.log('hi')
+      console.log('user')
     }, [])
 
     return (
@@ -200,7 +200,7 @@ const RecipesList = ({currentUser, ...props}) =>{
   } else {
     useEffect(()=>{
       getRecipes()
-      console.log('hi')
+      console.log('no user')
     }, [])
 
     return (
