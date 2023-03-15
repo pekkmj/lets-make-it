@@ -182,9 +182,8 @@ const RecipesList = ({currentUser, ...props}) =>{
     useEffect(()=>{
       getRecipes()
       getUser()
+      console.log('hi')
     }, [])
-
-    console.log(`Welcome: ${user.username}`)
 
     return (
       <div className="grid-container">
@@ -201,9 +200,8 @@ const RecipesList = ({currentUser, ...props}) =>{
   } else {
     useEffect(()=>{
       getRecipes()
+      console.log('hi')
     }, [])
-
-    console.log(`Welcome: ${user.username}`)
 
     return (
       <div className="grid-container">
